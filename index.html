@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>COVR — Join the Waitlist</title>
+  <meta name="description" content="Be first to own original music cover art — before the world hears the song. Join the COVR waitlist for early access and first bid rights." />
+  <meta property="og:title" content="COVR — Own the Art Behind the Music" />
+  <meta property="og:description" content="Bid on original album cover art before release. Museum-grade frame. Delivered to your door." />
+  <meta property="og:image" content="https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?w=1200&q=90" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,200;0,9..144,300;1,9..144,200;1,9..144,300&family=DM+Sans:wght@300;400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --ink: #0E0D0B;
+      --ink2: #1A1916;
+      --ink3: #2E2C28;
+      --gold: #8B6914;
+      --gold2: #C49A28;
+      --gold3: #F0C84A;
+      --cream: #FAFAF7;
+      --cream2: #F4F3EE;
+      --sub: #6B6860;
+      --rule: #2E2C28;
+      --rule2: #3D3B35;
+      --live: #C0392B;
+      --green: #2D6A4F;
+      --ease: cubic-bezier(0.25,0.46,0.45,0.94);
+      --ease-out: cubic-bezier(0.16,1,0.3,1);
+    }
+    html { font-size: 16px; scroll-behavior: smooth; }
+    body {
+      background: var(--ink);
+      color: var(--cream);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 300;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+      min-height: 100vh;
+    }
+    ::selection { background: var(--gold3); color: var(--ink); }
+    ::-webkit-scrollbar { width: 3px; }
+    ::-webkit-scrollbar-track { background: var(--ink2); }
+    ::-webkit-scrollbar-thumb { background: var(--rule2); }
+
+    /* ── TYPOGRAPHY ── */
+    .serif { font-family: 'Fraunces', serif; font-weight: 300; letter-spacing: -0.02em; line-height: 1; }
+    .serif-i { font-family: 'Fraunces', serif; font-style: italic; font-weight: 200; }
+    .mono { font-family: 'DM Mono', monospace; }
+    .label {
+      font-family: 'DM Mono', monospace;
+      font-size: 9px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--sub);
+    }
+    .gold-text {
+      background: linear-gradient(135deg, var(--gold) 0%, var(--gold2) 50%, var(--gold) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* ── LAYOUT ── */
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+    .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+
+    /* ── HEADER ── */
+    header {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 50;
+      padding: 0 24px;
+      height: 60px;
+      display: flex; align-items: center; justify-content: space-between;
+      border-bottom: 1px solid var(--rule);
+      background: rgba(14,13,11,0.96);
+      backdrop-filter: blur(16px);
+    }
+    .logo { font-family: 'Fraunces', serif; font-weight: 300; font-size: 18px; letter-spacing: 0.14em; color: var(--cream); text-decoration: none; }
+    .logo span { color: var(--gold2); }
+    .header-link { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--sub); text-decoration: none; transition: color 0.2s; }
+    .header-link:hover { color: var(--cream); }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: flex; align-items: center;
+      padding: 100px 0 60px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background:
+        radial-gradient(ellipse 60% 50% at 80% 40%, rgba(139,105,20,0.08) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 60% at 10% 80%, rgba(196,154,40,0.04) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    /* ── COUNTER BADGE ── */
+    .counter-badge {
+      display: inline-flex; align-items: center; gap: 10px;
+      padding: 8px 16px;
+      border: 1px solid var(--rule2);
+      background: rgba(255,255,255,0.03);
+      margin-bottom: 28px;
+    }
+    .live-dot {
+      width: 7px; height: 7px; border-radius: 50%;
+      background: var(--live); flex-shrink: 0;
+      animation: pulse 1.4s ease-in-out infinite;
+    }
+    @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.5;transform:scale(0.8)} }
+
+    /* ── HEADLINE ── */
+    h1.hero-title {
+      font-family: 'Fraunces', serif; font-weight: 200;
+      font-size: clamp(52px, 8vw, 92px);
+      line-height: 0.95;
+      color: var(--cream);
+      margin-bottom: 24px;
+      letter-spacing: -0.02em;
+    }
+    .hero-sub {
+      font-size: 16px; color: rgba(244,243,238,0.5);
+      font-weight: 300; line-height: 1.8;
+      max-width: 420px; margin-bottom: 36px;
+    }
+
+    /* ── FEATURE PILLS ── */
+    .pills { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 36px; }
+    .pill {
+      display: inline-flex; align-items: center; gap: 5px;
+      padding: 5px 10px;
+      border: 1px solid var(--rule2);
+      background: rgba(255,255,255,0.03);
+      font-family: 'DM Mono', monospace;
+      font-size: 8px; letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--sub);
+    }
+    .pill-icon { color: var(--gold2); font-size: 9px; }
+
+    /* ── SOCIAL PROOF ── */
+    .proof-box {
+      padding: 18px 20px;
+      border: 1px solid var(--rule);
+      background: rgba(255,255,255,0.02);
+      min-height: 88px;
+    }
+    .proof-quote {
+      font-family: 'Fraunces', serif; font-style: italic; font-weight: 200;
+      font-size: 15px; color: var(--cream); line-height: 1.6;
+      margin-bottom: 8px;
+    }
+
+    /* ── FORM CARD ── */
+    .form-card {
+      border: 1px solid var(--rule2);
+      background: var(--ink2);
+      overflow: hidden;
+    }
+    .form-header {
+      padding: 22px 26px;
+      border-bottom: 1px solid var(--rule);
+      background: rgba(255,255,255,0.02);
+    }
+    .form-body { padding: 26px; }
+    .form-footer {
+      padding: 12px 26px;
+      border-top: 1px solid var(--rule);
+      background: rgba(255,255,255,0.02);
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 8px;
+    }
+
+    /* ── INPUTS ── */
+    .field-label { font-family: 'DM Mono', monospace; font-size: 8px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--sub); display: block; margin-bottom: 8px; }
+    input[type="text"], input[type="email"] {
+      width: 100%; background: var(--ink3);
+      border: 1px solid var(--rule2); outline: none;
+      padding: 12px 14px;
+      font-family: 'DM Sans', sans-serif; font-size: 15px;
+      color: var(--cream); font-weight: 300;
+      transition: border-color 0.2s;
+    }
+    input[type="text"]:focus, input[type="email"]:focus {
+      border-color: var(--gold);
+      box-shadow: 0 0 0 2px rgba(196,154,40,0.1);
+    }
+    input::placeholder { color: rgba(244,243,238,0.2); }
+
+    /* ── ROLE BUTTONS ── */
+    .role-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+    .role-btn {
+      padding: 13px 12px;
+      border: 1px solid var(--rule2);
+      background: var(--ink3);
+      cursor: pointer; text-align: left;
+      transition: all 0.2s;
+      color: var(--cream);
+    }
+    .role-btn:hover { border-color: var(--rule2); background: rgba(255,255,255,0.04); }
+    .role-btn.active { border-color: var(--gold); background: rgba(196,154,40,0.07); }
+    .role-btn-title { font-family: 'DM Mono', monospace; font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--sub); margin-bottom: 3px; display: flex; align-items: center; gap: 5px; }
+    .role-btn.active .role-btn-title { color: var(--gold); }
+    .role-btn-desc { font-size: 11px; color: rgba(244,243,238,0.35); font-weight: 300; line-height: 1.4; }
+
+    /* ── SUBMIT ── */
+    .submit-btn {
+      width: 100%; padding: 14px;
+      background: var(--cream); color: var(--ink);
+      border: none; cursor: pointer;
+      font-family: 'DM Mono', monospace; font-size: 11px;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+      transition: all 0.2s;
+      opacity: 0.35;
+    }
+    .submit-btn.ready { opacity: 1; }
+    .submit-btn.ready:hover { background: rgba(244,243,238,0.88); transform: translateY(-1px); }
+    .submit-btn:disabled { cursor: not-allowed; }
+
+    /* ── ERROR ── */
+    .error-box {
+      padding: 10px 14px;
+      background: rgba(192,57,43,0.08);
+      border: 1px solid rgba(192,57,43,0.3);
+      font-size: 12px; color: #E74C3C; font-weight: 300;
+      display: none;
+    }
+    .error-box.show { display: block; }
+
+    /* ── SUCCESS ── */
+    #success-screen {
+      display: none;
+      position: fixed; inset: 0; z-index: 100;
+      background: var(--ink);
+      align-items: center; justify-content: center;
+      flex-direction: column;
+      text-align: center;
+      padding: 40px 24px;
+    }
+    #success-screen.show { display: flex; }
+    .success-icon {
+      width: 72px; height: 72px; border-radius: 50%;
+      background: rgba(139,105,20,0.1);
+      border: 1px solid rgba(139,105,20,0.3);
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 28px;
+      animation: popIn 0.6s var(--ease-out) both;
+    }
+    @keyframes popIn { from{opacity:0;transform:scale(0.7)} to{opacity:1;transform:scale(1)} }
+    .success-title { font-family: 'Fraunces', serif; font-weight: 200; font-size: clamp(36px, 6vw, 58px); color: var(--cream); margin-bottom: 16px; line-height: 1.05; animation: fadeUp 0.7s 0.1s var(--ease-out) both; }
+    .success-sub { font-size: 15px; color: rgba(244,243,238,0.5); font-weight: 300; line-height: 1.8; max-width: 420px; margin: 0 auto 32px; animation: fadeUp 0.7s 0.2s var(--ease-out) both; }
+    .success-number { padding: 20px 40px; border: 1px solid var(--rule2); background: var(--ink2); margin-bottom: 32px; animation: fadeUp 0.7s 0.3s var(--ease-out) both; }
+    .share-row { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; animation: fadeUp 0.7s 0.4s var(--ease-out) both; }
+
+    /* ── BUTTONS ── */
+    .btn { display: inline-flex; align-items: center; gap: 7px; font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; padding: 11px 20px; border: none; cursor: pointer; transition: all 0.2s; text-decoration: none; }
+    .btn-cream { background: var(--cream); color: var(--ink); }
+    .btn-cream:hover { background: rgba(244,243,238,0.85); }
+    .btn-outline-light { background: transparent; color: rgba(244,243,238,0.6); border: 1px solid var(--rule2); }
+    .btn-outline-light:hover { border-color: rgba(244,243,238,0.3); color: var(--cream); }
+    .btn-gold { background: var(--gold); color: white; }
+    .btn-gold:hover { background: var(--gold2); }
+
+    /* ── SECTIONS ── */
+    .section { padding: 80px 0; border-top: 1px solid var(--rule); }
+
+    /* ── DROPS GRID ── */
+    .drops-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+    .drop-card { background: var(--ink2); border: 1px solid var(--rule); overflow: hidden; }
+    .drop-img { position: relative; aspect-ratio: 1/1; overflow: hidden; }
+    .drop-img img { width: 100%; height: 100%; object-fit: cover; filter: saturate(0.4) brightness(0.55); transition: filter 0.5s; }
+    .drop-card:hover .drop-img img { filter: saturate(0.7) brightness(0.65); }
+    .drop-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(14,13,11,0.85) 0%, transparent 55%); }
+    .drop-info { position: absolute; bottom: 12px; left: 12px; right: 12px; }
+    .drop-body { padding: 14px 16px; }
+    .drop-badge { position: absolute; top: 10px; left: 10px; font-family: 'DM Mono', monospace; font-size: 8px; letter-spacing: 0.1em; text-transform: uppercase; padding: 3px 8px; background: rgba(14,13,11,0.85); border: 1px solid var(--rule2); color: var(--sub); }
+
+    /* ── STEPS ── */
+    .steps { display: flex; flex-direction: column; gap: 1px; background: var(--rule); }
+    .step { display: flex; gap: 20px; padding: 20px 22px; background: var(--ink2); align-items: flex-start; }
+    .step-num { font-family: 'Fraunces', serif; font-weight: 200; font-size: 22px; color: var(--gold2); min-width: 32px; flex-shrink: 0; line-height: 1.2; }
+    .step-title { font-family: 'Fraunces', serif; font-weight: 300; font-size: 17px; color: var(--cream); margin-bottom: 3px; }
+    .step-desc { font-size: 13px; color: var(--sub); font-weight: 300; line-height: 1.7; }
+
+    /* ── CTA BOTTOM ── */
+    .cta-bottom { padding: 80px 0; background: var(--ink2); border-top: 1px solid var(--rule); text-align: center; }
+
+    /* ── FOOTER ── */
+    footer { padding: 28px 24px; border-top: 1px solid var(--rule); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
+    @keyframes spin { from{transform:rotate(0deg)} to{transform:rotate(360deg)} }
+    .anim-1 { animation: fadeUp 0.8s var(--ease-out) both; }
+    .anim-2 { animation: fadeUp 0.8s 0.1s var(--ease-out) both; }
+    .anim-3 { animation: fadeUp 0.8s 0.2s var(--ease-out) both; }
+    .anim-4 { animation: fadeUp 0.8s 0.3s var(--ease-out) both; }
+    .anim-5 { animation: fadeUp 0.8s 0.4s var(--ease-out) both; }
+    .spin { animation: spin 1s linear infinite; }
+
+    /* ── MOBILE ── */
+    @media(max-width: 900px) {
+      .grid { grid-template-columns: 1fr; gap: 48px; }
+      .drops-grid { grid-template-columns: 1fr; }
+      .hero { padding: 88px 0 48px; }
+      h1.hero-title { font-size: clamp(44px, 12vw, 72px); }
+      footer { flex-direction: column; align-items: flex-start; }
+    }
+    @media(max-width: 480px) {
+      .container { padding: 0 16px; }
+      .section { padding: 56px 0; }
+      .share-row { flex-direction: column; align-items: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <a href="#" class="logo">C<span>O</span>VR</a>
+    <div style="display:flex;align-items:center;gap:24px;">
+      <a href="https://covr-art.vercel.app" target="_blank" class="header-link">View Platform →</a>
+    </div>
+  </header>
+
+  <!-- SUCCESS SCREEN -->
+  <div id="success-screen">
+    <div class="success-icon">
+      <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#8B6914" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
+    </div>
+    <p class="label" style="color:var(--gold2);margin-bottom:12px;">You are on the list</p>
+    <h2 class="success-title">Welcome to<br /><span class="serif-i gold-text">COVR.</span></h2>
+    <p class="success-sub" id="success-msg">Check your email for confirmation. We will notify you 48 hours before every drop.</p>
+    <div class="success-number">
+      <p class="label" style="margin-bottom:6px;">You are collector number</p>
+      <p class="serif gold-text" style="font-size:44px;" id="success-count">#1,285</p>
+      <p class="label" style="margin-top:6px;color:var(--sub);">on the COVR waitlist</p>
+    </div>
+    <div class="share-row">
+      <a id="share-twitter" href="#" target="_blank" class="btn btn-cream">Share on X / Twitter</a>
+      <a id="share-whatsapp" href="#" target="_blank" class="btn btn-gold">Share on WhatsApp</a>
+      <a href="https://covr-art.vercel.app" target="_blank" class="btn btn-outline-light">Explore Platform →</a>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container">
+      <div class="grid">
+        <!-- LEFT -->
+        <div>
+          <div class="counter-badge anim-1">
+            <span class="live-dot"></span>
+            <span class="label" style="color:rgba(244,243,238,0.5);">
+              <span class="mono" style="color:var(--gold2);font-size:11px;font-weight:500;" id="counter-display">1,284</span>
+              &nbsp;collectors already waiting
+            </span>
+          </div>
+
+          <h1 class="hero-title anim-2">
+            Be first<br />to own<br /><span class="serif-i gold-text">the art.</span>
+          </h1>
+
+          <p class="hero-sub anim-3">
+            COVR is opening bidding on original music cover art — before the world hears the song. Join the waitlist for early access, exclusive drops, and first bid rights.
+          </p>
+
+          <div class="pills anim-4">
+            <span class="pill"><span class="pill-icon">◈</span>Authenticated by the artist</span>
+            <span class="pill"><span class="pill-icon">◻</span>Museum-grade frame</span>
+            <span class="pill"><span class="pill-icon">◇</span>Delivered to your door</span>
+            <span class="pill"><span class="pill-icon">◆</span>Certificate of authenticity</span>
+          </div>
+
+          <div class="proof-box anim-5">
+            <p class="proof-quote" id="proof-quote">"Finally — a way to own the art, not just stream the song."</p>
+            <p class="label" id="proof-author">Adaeze C. · London</p>
+          </div>
+        </div>
+
+        <!-- RIGHT — FORM -->
+        <div class="anim-3">
+          <div class="form-card">
+            <div class="form-header">
+              <p class="label" style="margin-bottom:6px;">Limited Early Access</p>
+              <h2 class="serif" style="font-size:26px;color:var(--cream);margin-bottom:4px;">Join the Waitlist</h2>
+              <p style="font-size:13px;color:var(--sub);font-weight:300;">Free to join. No credit card required.</p>
+            </div>
+
+            <form class="form-body" id="waitlist-form" novalidate>
+              <div style="display:flex;flex-direction:column;gap:14px;">
+
+                <div>
+                  <label class="field-label" for="inp-name">Full Name</label>
+                  <input type="text" id="inp-name" placeholder="Your full name" autocomplete="name" />
+                </div>
+
+                <div>
+                  <label class="field-label" for="inp-email">Email Address</label>
+                  <input type="email" id="inp-email" placeholder="your@email.com" autocomplete="email" />
+                </div>
+
+                <div>
+                  <p class="field-label" style="margin-bottom:10px;">I am joining as a</p>
+                  <div class="role-grid">
+                    <button type="button" class="role-btn" data-role="collector" onclick="selectRole('collector')">
+                      <div class="role-btn-title"><span>◻</span> Collector</div>
+                      <div class="role-btn-desc">I want to bid on and own cover art</div>
+                    </button>
+                    <button type="button" class="role-btn" data-role="artist" onclick="selectRole('artist')">
+                      <div class="role-btn-title"><span>◈</span> Artist</div>
+                      <div class="role-btn-desc">I want to list my cover art</div>
+                    </button>
+                  </div>
+                </div>
+
+                <div class="error-box" id="error-box">Please fill in all fields correctly.</div>
+
+                <button type="submit" class="submit-btn" id="submit-btn">
+                  <span id="btn-text">Secure My Spot</span>
+                  <svg id="btn-arrow" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                  <svg id="btn-spin" class="spin" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none;"><path d="M21 12a9 9 0 11-6.219-8.56"/></svg>
+                </button>
+
+                <p style="font-size:11px;color:var(--sub);text-align:center;line-height:1.6;">
+                  No spam. Ever. Only drop alerts and early access news.
+                </p>
+              </div>
+            </form>
+
+            <div class="form-footer">
+              <div style="display:flex;align-items:center;gap:4px;"><span style="color:var(--gold2);font-size:9px;">◈</span><span class="label" style="font-size:7px;">Artist Verified</span></div>
+              <div style="display:flex;align-items:center;gap:4px;"><span style="color:var(--gold2);font-size:9px;">◻</span><span class="label" style="font-size:7px;">Physical Frame</span></div>
+              <div style="display:flex;align-items:center;gap:4px;"><span style="color:var(--gold2);font-size:9px;">◇</span><span class="label" style="font-size:7px;">Insured Delivery</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMING DROPS -->
+  <section class="section">
+    <div class="container">
+      <div style="display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:32px;flex-wrap:wrap;gap:12px;">
+        <div>
+          <p class="label" style="margin-bottom:8px;">First to Drop</p>
+          <h2 class="serif" style="font-size:clamp(24px,4vw,36px);color:var(--cream);">What waitlist members bid on first</h2>
+        </div>
+        <div style="display:inline-flex;align-items:center;gap:6px;padding:5px 12px;border:1px solid rgba(192,57,43,0.3);background:rgba(192,57,43,0.06);">
+          <span class="live-dot"></span>
+          <span class="label" style="font-size:8px;color:#E74C3C;">Launching Soon</span>
+        </div>
+      </div>
+      <div class="drops-grid">
+        <div class="drop-card">
+          <div class="drop-img">
+            <img src="https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?w=600&q=80" alt="Invisible Cities" loading="lazy" />
+            <div class="drop-overlay"></div>
+            <div class="drop-badge">Waitlist Only</div>
+            <div class="drop-info">
+              <p class="label" style="color:rgba(244,243,238,0.5);margin-bottom:2px;font-size:8px;">SOLIS · Alternative R&B</p>
+              <h3 class="serif" style="font-size:20px;color:var(--cream);">Invisible Cities</h3>
+            </div>
+          </div>
+          <div class="drop-body">
+            <p style="font-size:13px;color:var(--sub);font-weight:300;">Original cover art. 1 of 1. Bidding opens to waitlist members first.</p>
+          </div>
+        </div>
+        <div class="drop-card">
+          <div class="drop-img">
+            <img src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=600&q=80" alt="Still Water" loading="lazy" />
+            <div class="drop-overlay"></div>
+            <div class="drop-badge">Waitlist Only</div>
+            <div class="drop-info">
+              <p class="label" style="color:rgba(244,243,238,0.5);margin-bottom:2px;font-size:8px;">AMARA · Soul</p>
+              <h3 class="serif" style="font-size:20px;color:var(--cream);">Still Water</h3>
+            </div>
+          </div>
+          <div class="drop-body">
+            <p style="font-size:13px;color:var(--sub);font-weight:300;">Original cover art. 1 of 1. Bidding opens to waitlist members first.</p>
+          </div>
+        </div>
+        <div class="drop-card">
+          <div class="drop-img">
+            <img src="https://images.unsplash.com/photo-1459749411175-04bf5292ceea?w=600&q=80" alt="Afterglow" loading="lazy" />
+            <div class="drop-overlay"></div>
+            <div class="drop-badge">Waitlist Only</div>
+            <div class="drop-info">
+              <p class="label" style="color:rgba(244,243,238,0.5);margin-bottom:2px;font-size:8px;">SOLIS · Afropiano</p>
+              <h3 class="serif" style="font-size:20px;color:var(--cream);">Afterglow</h3>
+            </div>
+          </div>
+          <div class="drop-body">
+            <p style="font-size:13px;color:var(--sub);font-weight:300;">Original cover art. 1 of 1. Bidding opens to waitlist members first.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STEPS -->
+  <section class="section">
+    <div class="container" style="max-width:640px;margin:0 auto;">
+      <div style="text-align:center;margin-bottom:40px;">
+        <p class="label" style="margin-bottom:10px;">After You Join</p>
+        <h2 class="serif" style="font-size:clamp(24px,4vw,36px);color:var(--cream);">Your path to owning the art</h2>
+      </div>
+      <div class="steps">
+        <div class="step">
+          <span class="step-num">01</span>
+          <div><div class="step-title">You join the waitlist today</div><div class="step-desc">Your spot is reserved. A confirmation email arrives from COVR within minutes.</div></div>
+        </div>
+        <div class="step">
+          <span class="step-num">02</span>
+          <div><div class="step-title">We notify you 48hrs before each drop</div><div class="step-desc">Before any auction goes public, waitlist members get early notice and first bid rights.</div></div>
+        </div>
+        <div class="step">
+          <span class="step-num">03</span>
+          <div><div class="step-title">You bid on original cover art</div><div class="step-desc">Real-time bidding. One original piece per auction. Highest bid when the clock ends wins.</div></div>
+        </div>
+        <div class="step">
+          <span class="step-num">04</span>
+          <div><div class="step-title">Your frame is prepared and shipped</div><div class="step-desc">Museum-grade print, archival frame, signed certificate — delivered within 14 days.</div></div>
+        </div>
+        <div class="step">
+          <span class="step-num">05</span>
+          <div><div class="step-title">You own a piece of music history</div><div class="step-desc">Registered under your name. Artist-signed. Certified. Permanently, officially yours.</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BOTTOM CTA -->
+  <div class="cta-bottom">
+    <div class="container" style="max-width:500px;margin:0 auto;">
+      <p class="label" style="margin-bottom:14px;">Limited Waitlist</p>
+      <h2 class="serif" style="font-size:clamp(28px,5vw,48px);color:var(--cream);margin-bottom:16px;line-height:1.05;">
+        The art behind the music<br /><span class="serif-i gold-text">is yours to own.</span>
+      </h2>
+      <p style="font-size:15px;color:var(--sub);font-weight:300;line-height:1.8;margin-bottom:28px;">
+        Join <span id="cta-count">1,284</span>+ collectors who have already reserved their spot.
+      </p>
+      <button onclick="document.getElementById('inp-name').focus();window.scrollTo({top:0,behavior:'smooth'})" class="btn btn-gold" style="font-size:11px;padding:13px 24px;">
+        Join the Waitlist →
+      </button>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="container">
+    <div style="display:flex;align-items:center;gap:12px;">
+      <span class="serif" style="font-size:16px;letter-spacing:0.12em;color:var(--cream);">COVR</span>
+      <span class="label" style="font-size:8px;">Music Art Ownership Platform</span>
+    </div>
+    <div style="display:flex;align-items:center;gap:20px;flex-wrap:wrap;">
+      <span class="label" style="font-size:8px;color:var(--sub);">rilwanayorinde@gmail.com</span>
+      <a href="https://covr-art.vercel.app" target="_blank" class="label" style="font-size:8px;color:var(--gold2);text-decoration:none;">covr-art.vercel.app →</a>
+    </div>
+  </footer>
+
+  <script>
+    // ── STATE ────────────────────────────────────────────────────────────────
+    let selectedRole = ''
+    let count = 1284
+
+    // Animate counter on load
+    let displayCount = 1200
+    const counterEl = document.getElementById('counter-display')
+    const ctaCount = document.getElementById('cta-count')
+    const countInterval = setInterval(() => {
+      displayCount += 3
+      if (displayCount >= count) { displayCount = count; clearInterval(countInterval) }
+      if (counterEl) counterEl.textContent = displayCount.toLocaleString()
+      if (ctaCount) ctaCount.textContent = displayCount.toLocaleString()
+    }, 30)
+
+    // Rotate social proof
+    const proofs = [
+      { q: '"Finally — a way to own the art, not just stream the song."', a: 'Adaeze C. · London' },
+      { q: '"I have been waiting for something like this for years."', a: 'Tunde B. · Lagos' },
+      { q: '"Music deserves a physical home. COVR gets it."', a: 'Kemi O. · Abuja' },
+      { q: '"The frame arrived. I cried. This is what music culture looks like."', a: 'David A. · Manchester' },
+    ]
+    let proofIdx = 0
+    const proofQ = document.getElementById('proof-quote')
+    const proofA = document.getElementById('proof-author')
+    setInterval(() => {
+      proofIdx = (proofIdx + 1) % proofs.length
+      if (proofQ) proofQ.textContent = proofs[proofIdx].q
+      if (proofA) proofA.textContent = proofs[proofIdx].a
+    }, 4500)
+
+    // ── ROLE SELECT ───────────────────────────────────────────────────────────
+    function selectRole(role) {
+      selectedRole = role
+      document.querySelectorAll('.role-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.role === role)
+      })
+      checkValid()
+    }
+
+    // ── VALIDATION ────────────────────────────────────────────────────────────
+    function checkValid() {
+      const name = document.getElementById('inp-name').value.trim()
+      const email = document.getElementById('inp-email').value.trim()
+      const btn = document.getElementById('submit-btn')
+      const isValid = name.length > 1 && email.includes('@') && email.includes('.') && selectedRole !== ''
+      btn.classList.toggle('ready', isValid)
+      return isValid
+    }
+
+    document.getElementById('inp-name').addEventListener('input', checkValid)
+    document.getElementById('inp-email').addEventListener('input', checkValid)
+
+    // ── SUBMIT ────────────────────────────────────────────────────────────────
+    document.getElementById('waitlist-form').addEventListener('submit', async (e) => {
+      e.preventDefault()
+      const name = document.getElementById('inp-name').value.trim()
+      const email = document.getElementById('inp-email').value.trim()
+      const errorBox = document.getElementById('error-box')
+      const btnText = document.getElementById('btn-text')
+      const btnArrow = document.getElementById('btn-arrow')
+      const btnSpin = document.getElementById('btn-spin')
+      const submitBtn = document.getElementById('submit-btn')
+
+      if (!checkValid()) {
+        errorBox.textContent = 'Please fill in all fields and select your role.'
+        errorBox.classList.add('show')
+        return
+      }
+      errorBox.classList.remove('show')
+
+      // Loading state
+      btnText.textContent = 'Joining...'
+      btnArrow.style.display = 'none'
+      btnSpin.style.display = 'block'
+      submitBtn.disabled = true
+
+      try {
+        const res = await fetch('/api/waitlist', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ name, email, role: selectedRole }),
+        })
+        const data = await res.json()
+
+        if (!res.ok) {
+          errorBox.textContent = data.error || 'Something went wrong. Please try again.'
+          errorBox.classList.add('show')
+          btnText.textContent = 'Secure My Spot'
+          btnArrow.style.display = 'block'
+          btnSpin.style.display = 'none'
+          submitBtn.disabled = false
+          return
+        }
+
+        // SUCCESS
+        count++
+        const successCount = document.getElementById('success-count')
+        const successMsg = document.getElementById('success-msg')
+        const successScreen = document.getElementById('success-screen')
+        const shareTwitter = document.getElementById('share-twitter')
+        const shareWhatsapp = document.getElementById('share-whatsapp')
+
+        if (successCount) successCount.textContent = '#' + count.toLocaleString()
+        if (successMsg) {
+          successMsg.textContent = selectedRole === 'artist'
+            ? `We received your artist application. We will be in touch at ${email} when submissions open.`
+            : `A confirmation has been sent to ${email}. We will notify you 48 hours before every drop.`
+        }
+        const tweetText = encodeURIComponent(`I just joined the COVR waitlist — a marketplace to own original music cover art before the song drops. covr-waitlist.vercel.app`)
+        const waText = encodeURIComponent(`I just joined COVR — you can bid on and own original music cover art before it's released. Join the waitlist: covr-waitlist.vercel.app`)
+        if (shareTwitter) shareTwitter.href = `https://twitter.com/intent/tweet?text=${tweetText}`
+        if (shareWhatsapp) shareWhatsapp.href = `https://wa.me/?text=${waText}`
+
+        successScreen.classList.add('show')
+        document.body.style.overflow = 'hidden'
+
+      } catch {
+        errorBox.textContent = 'Network error. Please check your connection and try again.'
+        errorBox.classList.add('show')
+        btnText.textContent = 'Secure My Spot'
+        btnArrow.style.display = 'block'
+        btnSpin.style.display = 'none'
+        submitBtn.disabled = false
+      }
+    })
+  </script>
+</body>
+</html>
