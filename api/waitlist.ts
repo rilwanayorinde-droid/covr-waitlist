@@ -1,4 +1,4 @@
-import type { VercelRequest, VercelResponse } from '@vercel/node'
+﻿import type { VercelRequest, VercelResponse } from '@vercel/node'
 
 const OWNER_EMAIL = 'rilwanayorinde@gmail.com'
 
@@ -14,15 +14,15 @@ async function sendEmails(entry: { name: string; email: string; role: string }) 
 
   const time = new Date().toLocaleString('en-GB', { timeZone: 'Africa/Lagos', dateStyle: 'full', timeStyle: 'short' })
 
-  // ── Notify YOU ──────────────────────────────────────────────────────────────
+  // â”€â”€ Notify YOU â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   await send({
-    from: 'COVR Waitlist <waitlist@covr-waitlist.vercel.app>',
+    from: 'COVR Waitlist <onboarding@resend.dev>',
     to: [OWNER_EMAIL],
-    subject: `🎨 New ${entry.role === 'artist' ? 'Artist' : 'Collector'} signup — ${entry.name}`,
+    subject: `ðŸŽ¨ New ${entry.role === 'artist' ? 'Artist' : 'Collector'} signup â€” ${entry.name}`,
     html: `
       <div style="font-family:'Courier New',monospace;max-width:480px;margin:0 auto;background:#0E0D0B;color:#F4F3EE;padding:32px;border:1px solid #2E2C28;">
         <div style="border-bottom:1px solid #2E2C28;padding-bottom:14px;margin-bottom:22px;">
-          <span style="color:#C49A28;font-size:10px;letter-spacing:3px;">C O V R — WAITLIST</span>
+          <span style="color:#C49A28;font-size:10px;letter-spacing:3px;">C O V R â€” WAITLIST</span>
         </div>
         <h2 style="color:#F4F3EE;font-family:Georgia,serif;font-weight:300;font-size:20px;margin:0 0 20px;">New ${entry.role === 'artist' ? 'Artist' : 'Collector'} Signup</h2>
         <table style="width:100%;border-collapse:collapse;">
@@ -46,19 +46,19 @@ async function sendEmails(entry: { name: string; email: string; role: string }) 
           </tr>
         </table>
         <div style="margin-top:22px;padding-top:14px;border-top:1px solid #2E2C28;">
-          <p style="color:#4A4740;font-size:9px;letter-spacing:1px;margin:0;">COVR — covr-waitlist.vercel.app</p>
+          <p style="color:#4A4740;font-size:9px;letter-spacing:1px;margin:0;">COVR â€” covr-waitlist.vercel.app</p>
         </div>
       </div>
     `,
   })
 
-  // ── Welcome the subscriber ──────────────────────────────────────────────────
+  // â”€â”€ Welcome the subscriber â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   const isArtist = entry.role === 'artist'
   await send({
-    from: 'Yusuf at COVR <yusuf@covr-waitlist.vercel.app>',
+    from: 'Yusuf at COVR <onboarding@resend.dev>',
     to: [entry.email],
     reply_to: OWNER_EMAIL,
-    subject: isArtist ? 'COVR — Your artist application is received.' : 'COVR — You are on the list.',
+    subject: isArtist ? 'COVR â€” Your artist application is received.' : 'COVR â€” You are on the list.',
     html: `
       <div style="font-family:Georgia,'Times New Roman',serif;max-width:520px;margin:0 auto;background:#FAFAF7;color:#1A1916;padding:0;">
         <div style="background:#0E0D0B;padding:22px 32px;border-left:3px solid #C49A28;">
@@ -71,7 +71,7 @@ async function sendEmails(entry: { name: string; email: string; role: string }) 
           <p style="font-size:15px;color:#6B6860;line-height:1.8;font-family:'Helvetica Neue',sans-serif;font-weight:300;margin:0 0 22px;">
             ${isArtist
               ? `Thank you for applying to list your cover art on COVR. We review every application personally and will be in touch at this address when artist submissions open.`
-              : `You are on the COVR waitlist. Before any auction goes live, you will receive a 48-hour early notice — giving you first bid rights on original music cover art, before the public.`
+              : `You are on the COVR waitlist. Before any auction goes live, you will receive a 48-hour early notice â€” giving you first bid rights on original music cover art, before the public.`
             }
           </p>
           <div style="background:#F4F3EE;border:1px solid #E2E0D8;padding:18px 22px;margin:20px 0;">
@@ -80,20 +80,20 @@ async function sendEmails(entry: { name: string; email: string; role: string }) 
             </p>
             <p style="font-size:14px;color:#3D3B35;line-height:1.7;font-family:'Helvetica Neue',sans-serif;font-weight:300;margin:0;">
               ${isArtist
-                ? 'Your best original cover art — minimum 3000×3000px, PNG or TIFF. Have your Spotify URL and monthly listener count ready. We will walk you through the rest.'
+                ? 'Your best original cover art â€” minimum 3000Ã—3000px, PNG or TIFF. Have your Spotify URL and monthly listener count ready. We will walk you through the rest.'
                 : 'Real bidding. Real art. A museum-grade frame delivered to your door. Every piece is authenticated by the artist and permanently registered in your name when you win.'
               }
             </p>
           </div>
           <p style="font-size:14px;color:#6B6860;line-height:1.8;font-family:'Helvetica Neue',sans-serif;font-weight:300;margin:0 0 6px;">Explore the platform at:</p>
-          <a href="https://covr-art.vercel.app" style="font-family:'Courier New',monospace;font-size:13px;color:#8B6914;text-decoration:none;">covr-art.vercel.app →</a>
+          <a href="https://covr-art.vercel.app" style="font-family:'Courier New',monospace;font-size:13px;color:#8B6914;text-decoration:none;">covr-art.vercel.app â†’</a>
           <div style="margin-top:36px;padding-top:20px;border-top:1px solid #E2E0D8;">
             <p style="font-size:14px;color:#1A1916;margin:0 0 3px;">Yusuf Ayorinde Rilwa</p>
             <p style="font-family:'Courier New',monospace;font-size:9px;color:#6B6860;margin:0;letter-spacing:1px;">FOUNDER, COVR</p>
           </div>
         </div>
         <div style="background:#F4F3EE;border-top:1px solid #E2E0D8;padding:14px 32px;display:flex;justify-content:space-between;">
-          <span style="font-family:'Courier New',monospace;font-size:8px;color:#9B9890;letter-spacing:1px;">COVR — MUSIC ART OWNERSHIP</span>
+          <span style="font-family:'Courier New',monospace;font-size:8px;color:#9B9890;letter-spacing:1px;">COVR â€” MUSIC ART OWNERSHIP</span>
           <span style="font-family:'Courier New',monospace;font-size:8px;color:#9B9890;">rilwanayorinde@gmail.com</span>
         </div>
       </div>
@@ -123,3 +123,4 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     return res.status(500).json({ error: 'Something went wrong. Please try again.' })
   }
 }
+
