@@ -5,11 +5,23 @@ const OWNER_EMAIL = 'rilwanayorinde@gmail.com'
 async function sendEmails(entry: { name: string; email: string; role: string }) {
   const KEY = process.env.RESEND_API_KEY
   if (!KEY) { console.warn('RESEND_API_KEY not set'); return }
+  const AUDIENCE_ID = '3c56edd8-9466-469b-ab7e-1bada917f090'
 
   const send = (body: object) => fetch('https://api.resend.com/emails', {
     method: 'POST',
     headers: { 'Authorization': `Bearer ${KEY}`, 'Content-Type': 'application/json' },
     body: JSON.stringify(body),
+  })
+  // Add contact to Resend Audience
+  await fetch(`https://api.resend.com/audiences/${AUDIENCE_ID}/contacts`, {
+    method: 'POST',
+    headers: { 'Authorization': `Bearer ${KEY}`, 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      email: entry.email,
+      first_name: entry.name.split(' ')[0],
+      last_name: entry.name.split(' ').slice(1).join(' '),
+      unsubscribed: false,
+    }),
   })
 
   const time = new Date().toLocaleString('en-GB', { timeZone: 'Africa/Lagos', dateStyle: 'full', timeStyle: 'short' })
@@ -123,4 +135,6 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     return res.status(500).json({ error: 'Something went wrong. Please try again.' })
   }
 }
+
+
 
