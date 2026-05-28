@@ -5,7 +5,10 @@
   "scripts": {
     "build": "echo 'Static site - no build needed'"
   },
-  "dependencies": {},
+  "dependencies": {
+    "@upstash/redis": "^1.38.0",
+    "@vercel/kv": "^3.0.0"
+  },
   "devDependencies": {
     "@vercel/node": "^3.0.0",
     "typescript": "^5.0.0"
